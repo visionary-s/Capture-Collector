@@ -2,7 +2,7 @@ import sys
 import getpass
 import os
 # import pexpect
-# import capture
+# import Capture
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QStyleFactory, QTreeWidgetItem
 from src.Pkt_UI import Pkt_Ui_MainWindow
@@ -49,7 +49,7 @@ class Pkt_Ui(QMainWindow, Pkt_Ui_MainWindow):
         self.hide();
         self.namespace = namespace
         self.dal_blade = "pccc-tool-203-11-1"
-        # self.dal_blade = capture.get_pcc_dallas_master_blade(node_name)
+        # self.dal_blade = Capture.get_pcc_dallas_master_blade(node_name)
         self.node_name.setText(QtCore.QCoreApplication.translate("MainWindow", node_name))
         hello = self.label.text() + node_name
         self.label.setText(QtCore.QCoreApplication.translate("MainWindow", hello))
@@ -63,13 +63,13 @@ class Pkt_Ui(QMainWindow, Pkt_Ui_MainWindow):
             capture_obj = "node"
             self.logBroswer.append("Starting capture on node " + self.node_name.text() + 
             "\n using " + self.node_cap.currentText() + "\n filtered by " + self.node_filter.text())
-            # capture.capture_start(self.node_name.text(), self.dal_blade, self.node_filter.text(), self.namespace, sut, username, capture_obj, self.node_cap.currentText())
+            # Capture.capture_start(self.node_name.text(), self.dal_blade, self.node_filter.text(), self.namespace, sut, username, capture_obj, self.node_cap.currentText())
 
         if self.dal_name.isChecked():
             capture_obj = "dallas"
             self.logBroswer.append("Starting capture on Dallas machine " + self.dal_blade
             + "\n using " + self.dal_cap.currentText() + "\n filtered by " + self.dal_filter.text())
-            # capture.capture_start(self.node_name.text(), self.dal_blade, self.dal_filter.text(), self.namespace, sut, username, capture_obj, self.dal_cap.currentText())
+            # Capture.capture_start(self.node_name.text(), self.dal_blade, self.dal_filter.text(), self.namespace, sut, username, capture_obj, self.dal_cap.currentText())
 
         self.logBroswer.append("Capture is ongoing, plz wait................")
         self.logBroswer.append("--------------------------------------------")
@@ -84,7 +84,7 @@ class Pkt_Ui(QMainWindow, Pkt_Ui_MainWindow):
             self.logBroswer.append("Stopping capture on node " + self.node_name.text())
         if self.dal_name.isChecked():
             self.logBroswer.append("Stopping capture on Dallas " +  self.dal_blade)
-        # self.savedPath = capture.capture_stop()
+        # self.savedPath = Capture.capture_stop()
 
     def savePkts(self):
         self.savedPath = ["/lab/epg_st_sandbox/eshibij/filename", "/lab/epg_st_sandbox/eshibij/path2", "/lab/epg_st_sandbox/eshibij/path3"]
