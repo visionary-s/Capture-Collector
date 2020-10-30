@@ -87,7 +87,7 @@ class Pkt_Ui(QMainWindow, Pkt_Ui_MainWindow):
         # self.savedPath = Capture.capture_stop()
 
     def savePkts(self):
-        self.savedPath = ["/lab/epg_st_sandbox/eshibij/filename", "/lab/epg_st_sandbox/eshibij/path2", "/lab/epg_st_sandbox/eshibij/path3"]
+        self.savedPath = ["/lab/sandbox/euser/filename", "/lab/sandbox/euser/path2", "/lab/sandbox/euser/path3"]
         self.parentPath = '/'.join(self.savedPath[0].split('/')[:-1]) + '/'
         self.logBroswer.append("Saving packets under " + self.parentPath)
         self.listPath()
