@@ -9,6 +9,7 @@
 
 
 import getpass
+import logging
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -16,7 +17,7 @@ class Pkt_Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(489, 478)
-        
+        MainWindow.setFixedSize(MainWindow.width(), MainWindow.height());
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -25,23 +26,19 @@ class Pkt_Ui_MainWindow(object):
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
-        
         self.label = QtWidgets.QLabel(self.gridLayoutWidget)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
-        
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 50, 111, 21))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        
         self.product_label = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.product_label.setObjectName("product_label")
         self.verticalLayout.addWidget(self.product_label)
-        
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(140, 50, 71, 22))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
@@ -64,7 +61,6 @@ class Pkt_Ui_MainWindow(object):
         self.node_name.setProperty("node_selected", False)
         self.node_name.setObjectName("node_name")
         self.verticalLayout_3.addWidget(self.node_name)
-        
         self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(140, 80, 71, 22))
         self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
@@ -77,7 +73,6 @@ class Pkt_Ui_MainWindow(object):
         self.node_cap.addItem("")
         self.node_cap.addItem("")
         self.verticalLayout_4.addWidget(self.node_cap)
-        
         self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(220, 80, 51, 21))
         self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
@@ -87,37 +82,31 @@ class Pkt_Ui_MainWindow(object):
         self.lb_filter_1 = QtWidgets.QLabel(self.verticalLayoutWidget_5)
         self.lb_filter_1.setObjectName("lb_filter_1")
         self.verticalLayout_5.addWidget(self.lb_filter_1)
-        
         self.verticalLayoutWidget_6 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_6.setGeometry(QtCore.QRect(270, 80, 201, 22))
         self.verticalLayoutWidget_6.setObjectName("verticalLayoutWidget_6")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_6)
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        
         self.node_filter = QtWidgets.QLineEdit(self.verticalLayoutWidget_6)
         self.node_filter.setProperty("node_filter", "")
         self.node_filter.setObjectName("node_filter")
         self.verticalLayout_6.addWidget(self.node_filter)
-        
         self.verticalLayoutWidget_7 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_7.setGeometry(QtCore.QRect(20, 110, 111, 21))
         self.verticalLayoutWidget_7.setObjectName("verticalLayoutWidget_7")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        
         self.dal_name = QtWidgets.QCheckBox(self.verticalLayoutWidget_7)
         self.dal_name.setObjectName("dal_name")
         self.verticalLayout_7.addWidget(self.dal_name)
-        
         self.verticalLayoutWidget_8 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_8.setGeometry(QtCore.QRect(140, 110, 71, 22))
         self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_8)
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
-        
         self.dal_cap = QtWidgets.QComboBox(self.verticalLayoutWidget_8)
         self.dal_cap.setObjectName("dal_cap")
         self.dal_cap.addItem("")
@@ -126,7 +115,6 @@ class Pkt_Ui_MainWindow(object):
         self.verticalLayoutWidget_9 = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget_9.setGeometry(QtCore.QRect(220, 110, 51, 21))
         self.verticalLayoutWidget_9.setObjectName("verticalLayoutWidget_9")
-        
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_9)
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
@@ -146,17 +134,14 @@ class Pkt_Ui_MainWindow(object):
         self.verticalLayout_10.addWidget(self.dal_filter)
         
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 150, 191, 241))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 150, 191, 250))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.logBroswer = QtWidgets.QTextBrowser(self.horizontalLayoutWidget)
-        self.logBroswer.setObjectName("logBroswer")
-        self.horizontalLayout.addWidget(self.logBroswer)
-        
+
         self.verticalLayoutWidget_11 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(220, 150, 191, 241))
+        self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(220, 150, 191, 250))
         self.verticalLayoutWidget_11.setObjectName("verticalLayoutWidget_11")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_11)
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
@@ -168,19 +153,15 @@ class Pkt_Ui_MainWindow(object):
         self.saved_files.header().setVisible(True)
         self.saved_files.header().setMinimumSectionSize(30)
         self.verticalLayout_11.addWidget(self.saved_files)
-        
         self.start_btn = QtWidgets.QPushButton(self.centralwidget)
         self.start_btn.setGeometry(QtCore.QRect(420, 150, 51, 31))
         self.start_btn.setObjectName("start_btn")
-        
         self.stop_btn = QtWidgets.QPushButton(self.centralwidget)
         self.stop_btn.setGeometry(QtCore.QRect(420, 190, 51, 31))
         self.stop_btn.setObjectName("stop_btn")
-        
         self.back_btn = QtWidgets.QPushButton(self.centralwidget)
         self.back_btn.setGeometry(QtCore.QRect(420, 360, 51, 31))
         self.back_btn.setObjectName("back_btn")
-        
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 489, 22))
@@ -191,7 +172,6 @@ class Pkt_Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
