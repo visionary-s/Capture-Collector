@@ -3,10 +3,12 @@ import getpass
 import os
 # import pexpect
 # import Capture
+import capture_ut as Capture
 from PyQt5 import QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QStyleFactory, QTreeWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QStyleFactory, QTreeWidgetItem
 from src.Pkt_UI import Pkt_Ui_MainWindow
 from src.Login import Login_Ui_MainWindow
+from src.LoggerBox import LoggerBox
 
 
 class MyMainForm(QMainWindow, Login_Ui_MainWindow):
@@ -39,6 +41,9 @@ class Pkt_Ui(QMainWindow, Pkt_Ui_MainWindow):
     def __init__(self, parent=None):
         super(Pkt_Ui, self).__init__(parent)
         self.setupUi(self)
+        
+        logbox = LoggerBox()
+        self.horizontalLayout.addWidget(logbox)
 
         self.start_btn.clicked.connect(self.start_capture)
         self.back_btn.clicked.connect(self.login)
@@ -57,23 +62,22 @@ class Pkt_Ui(QMainWindow, Pkt_Ui_MainWindow):
         self.show()
 
     def start_capture(self):
-        username = getpass.getuser()
+        self.username = getpass.getuser()
         sut = self.product_name.currentText()
         if self.node_name.isChecked():
             capture_obj = "node"
-            self.logBroswer.append("Starting capture on node " + self.node_name.text() + 
-            "\n using " + self.node_cap.currentText() + "\n filtered by " + self.node_filter.text())
-            # Capture.capture_start(self.node_name.text(), self.dal_blade, self.node_filter.text(), self.namespace, sut, username, capture_obj, self.node_cap.currentText())
+            # logging.info("Starting capture on node " + self.node_name.text() + 
+            # "\n using " + self.node_cap.currentText() + "\n filtered by " + self.node_filter.text())
+            Capture.capture_start(self.node_name.text(), self.dal_blade, self.node_filter.text(), self.namespace, sut, self.username, capture_obj, self.node_cap.currentText())
 
         if self.dal_name.isChecked():
             capture_obj = "dallas"
-            self.logBroswer.append("Starting capture on Dallas machine " + self.dal_blade
-            + "\n using " + self.dal_cap.currentText() + "\n filtered by " + self.dal_filter.text())
-            # Capture.capture_start(self.node_name.text(), self.dal_blade, self.dal_filter.text(), self.namespace, sut, username, capture_obj, self.dal_cap.currentText())
+            # logging.info("Starting capture on Dallas machine " + self.dal_blade 
+            # + "\n using " + self.dal_cap.currentText() + "\n filtered by " + self.dal_filter.text())
+            Capture.capture_start(self.node_name.text(), self.dal_blade, self.dal_filter.text(), self.namespace, sut, self.username, capture_obj, self.dal_cap.currentText())
 
-        self.logBroswer.append("Capture is ongoing, plz wait................")
-        self.logBroswer.append("--------------------------------------------")
-
+        logging.info("Capture is ongoing.................")
+        logging.info("-----------------------------------")
 
     def stop_save(self):
         self.stop_trace()
@@ -84,12 +88,13 @@ class Pkt_Ui(QMainWindow, Pkt_Ui_MainWindow):
             self.logBroswer.append("Stopping capture on node " + self.node_name.text())
         if self.dal_name.isChecked():
             self.logBroswer.append("Stopping capture on Dallas " +  self.dal_blade)
-        # self.savedPath = Capture.capture_stop()
+        self.savedPath = Capture.capture_stop()
 
     def savePkts(self):
-        self.savedPath = ["/lab/sandbox/euser/filename", "/lab/sandbox/euser/path2", "/lab/sandbox/euser/path3"]
+        # self.savedPath = ["/lab/epg_st_sandbox/eshibij/filename", "/lab/epg_st_sandbox/eshibij/path2", "/lab/epg_st_sandbox/eshibij/path3"]
+        # self.parentPath = "/lab/epg_st_sandbox/" + self.username + "/capture/PCC/node/itc"
         self.parentPath = '/'.join(self.savedPath[0].split('/')[:-1]) + '/'
-        self.logBroswer.append("Saving packets under " + self.parentPath)
+        logging.info("Saving packets under " + self.parentPath)
         self.listPath()
     
     def listPath(self):
