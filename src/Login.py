@@ -163,8 +163,6 @@ class Login_Ui_MainWindow(object):
         self.label_ns.setText(_translate("MainWindow", "Namespces:"))
         self.ns_input.setText(_translate("MainWindow", "beets"))
         self.start_trace.setText(_translate("MainWindow", "Start"))
-        self.label_5.setText(_translate("MainWindow", "Pls. contact: Jiang Du, Xingjie Fang, Jingjing Liu,"))
-        self.label_15.setText(_translate("MainWindow","                    Xiaojing Mi, Jingjing Liu, Biyun Shi"))
         self.label_8.setText(_translate("MainWindow", "Version 1"))
         self.label_6.setText(_translate("MainWindow", "Welcome using this tool:"))
         self.user_EID.setText(_translate("MainWindow", getpass.getuser().upper()))
